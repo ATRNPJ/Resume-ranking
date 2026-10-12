@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dataset | ResumeAI</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a href="{{ url_for('home') }}" class="logo">
+        <span class="logo-mark">R</span>
+        ResumeAI
+    </a>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('screening') }}">
+            Analyse
+        </a>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a
+            href="{{ url_for('dataset') }}"
+            class="active"
+        >
+            Dataset
+        </a>
+
+        <a href="{{ url_for('about') }}">
+            About
+        </a>
+
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+        >
+            🌙
+        </button>
+
+    </div>
+
+</nav>
+
+
+<main class="page-container">
+
+    <div class="page-header">
+
+        <span class="eyebrow">
+            DATASET EXPLORER
+        </span>
+
+        <h1>
+            Candidate Dataset
+        </h1>
+
+        <p>
+            Inspect the candidate data used for recruitment analysis.
+        </p>
+
+    </div>
+
+
+    {% if error %}
+
+    <div class="alert alert-error">
+        ⚠️ {{ error }}
+    </div>
+
+    {% else %}
+
+
+    <section class="stats-grid dataset-stats">
+
+        <div class="stat-card">
+
+            <span class="stat-icon">
+                👥
+            </span>
+
+            <span class="stat-label">
+                Total Rows
+            </span>
+
+            <strong>
+                {{ total_rows }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span class="stat-icon">
+                ▦
+            </span>
+
+            <span class="stat-label">
+                Total Columns
+            </span>
+
+            <strong>
+                {{ total_columns }}
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <section class="dashboard-card table-card">
+
+        <div class="card-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    DATA VIEW
+                </span>
+
+                <h2>
+                    Dataset Preview
+                </h2>
+
+            </div>
+
+            <span class="table-note">
+                Showing up to 100 rows
+            </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        {% for column in columns %}
+
+                        <th>
+                            {{ column }}
+                        </th>
+
+                        {% endfor %}
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for row in rows %}
+
+                    <tr>
+
+                        {% for column in columns %}
+
+                        <td>
+                            {{ row[column] }}
+                        </td>
+
+                        {% endfor %}
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="footer-brand">
+
+        <a href="{{ url_for('home') }}" class="footer-logo">
+            <span class="logo-mark">R</span>
+            ResumeAI
+        </a>
+
+        <p>
+            Intelligent and transparent resume screening.
+        </p>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 ResumeAI
+        </span>
+
+        <span>
+            Dataset Explorer
+        </span>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

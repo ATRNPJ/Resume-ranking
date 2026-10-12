@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | ResumeAI</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a href="{{ url_for('home') }}" class="logo">
+        <span class="logo-mark">R</span>
+        ResumeAI
+    </a>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('screening') }}">
+            Analyse
+        </a>
+
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="active"
+        >
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('dataset') }}">
+            Dataset
+        </a>
+
+        <a href="{{ url_for('about') }}">
+            About
+        </a>
+
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+        >
+            🌙
+        </button>
+
+    </div>
+
+</nav>
+
+
+<main class="page-container">
+
+    <div class="page-header">
+
+        <span class="eyebrow">
+            DATA ANALYTICS
+        </span>
+
+        <h1>
+            Recruitment Dashboard
+        </h1>
+
+        <p>
+            Explore statistics and patterns from the candidate dataset.
+        </p>
+
+    </div>
+
+
+    {% if error %}
+
+    <div class="alert alert-error">
+        ⚠️ {{ error }}
+    </div>
+
+    {% endif %}
+
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+
+            <span class="stat-icon">
+                👥
+            </span>
+
+            <span class="stat-label">
+                Total Candidates
+            </span>
+
+            <strong>
+                {{ total_candidates }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span class="stat-icon">
+                ✓
+            </span>
+
+            <span class="stat-label">
+                Hired
+            </span>
+
+            <strong>
+                {{ hired_count }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span class="stat-icon">
+                ○
+            </span>
+
+            <span class="stat-label">
+                Not Hired
+            </span>
+
+            <strong>
+                {{ not_hired_count }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span class="stat-icon">
+                📈
+            </span>
+
+            <span class="stat-label">
+                Hiring Rate
+            </span>
+
+            <strong>
+                {{ hiring_rate }}%
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <section class="stats-grid secondary-stats">
+
+        <div class="mini-stat-card">
+
+            <span>
+                Dataset Columns
+            </span>
+
+            <strong>
+                {{ column_count }}
+            </strong>
+
+        </div>
+
+
+        <div class="mini-stat-card">
+
+            <span>
+                Missing Values
+            </span>
+
+            <strong>
+                {{ missing_values }}
+            </strong>
+
+        </div>
+
+
+        <div class="mini-stat-card">
+
+            <span>
+                Duplicate Rows
+            </span>
+
+            <strong>
+                {{ duplicate_rows }}
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <section class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        ANALYSIS
+                    </span>
+
+                    <h2>
+                        Top Feature Relationships
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            {% if feature_data %}
+
+            <div class="feature-bars">
+
+                {% for feature in feature_data %}
+
+                <div class="feature-row">
+
+                    <div class="feature-info">
+
+                        <span>
+                            {{ feature.name }}
+                        </span>
+
+                        <strong>
+                            {{ feature.correlation }}
+                        </strong>
+
+                    </div>
+
+                    <div class="bar">
+
+                        <div
+                            class="bar-fill"
+                            style="width: {{ feature.correlation * 100 }}%;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% else %}
+
+            <div class="empty-state">
+
+                <span>📊</span>
+
+                <p>
+                    No numeric hiring relationships available.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        QUICK ACTION
+                    </span>
+
+                    <h2>
+                        Continue Analysis
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <p class="card-description">
+                Analyse an individual candidate or inspect
+                the complete dataset.
+            </p>
+
+
+            <div class="dashboard-actions">
+
+                <a
+                    href="{{ url_for('screening') }}"
+                    class="btn btn-primary"
+                >
+                    Analyse Candidate
+                </a>
+
+                <a
+                    href="{{ url_for('dataset') }}"
+                    class="btn btn-secondary"
+                >
+                    View Dataset
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="dashboard-card table-card">
+
+        <div class="card-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    DATA PREVIEW
+                </span>
+
+                <h2>
+                    Candidate Dataset
+                </h2>
+
+            </div>
+
+            <a
+                href="{{ url_for('dataset') }}"
+                class="text-link"
+            >
+                View Full Dataset →
+            </a>
+
+        </div>
+
+
+        {% if preview %}
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        {% for column in preview_columns %}
+
+                        <th>
+                            {{ column }}
+                        </th>
+
+                        {% endfor %}
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for row in preview %}
+
+                    <tr>
+
+                        {% for column in preview_columns %}
+
+                        <td>
+                            {{ row[column] }}
+                        </td>
+
+                        {% endfor %}
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <div class="empty-state">
+
+            <span>📂</span>
+
+            <p>
+                No dataset preview is available.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="footer-brand">
+
+        <a href="{{ url_for('home') }}" class="footer-logo">
+            <span class="logo-mark">R</span>
+            ResumeAI
+        </a>
+
+        <p>
+            Intelligent and transparent resume screening.
+        </p>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 ResumeAI
+        </span>
+
+        <span>
+            Data-driven recruitment insights
+        </span>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

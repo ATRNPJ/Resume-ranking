@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>About | ResumeAI</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a href="{{ url_for('home') }}" class="logo">
+        <span class="logo-mark">R</span>
+        ResumeAI
+    </a>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('screening') }}">
+            Analyse
+        </a>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('dataset') }}">
+            Dataset
+        </a>
+
+        <a
+            href="{{ url_for('about') }}"
+            class="active"
+        >
+            About
+        </a>
+
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+        >
+            🌙
+        </button>
+
+    </div>
+
+</nav>
+
+
+<main class="page-container">
+
+    <section class="about-hero">
+
+        <span class="eyebrow">
+            ABOUT RESUMEAI
+        </span>
+
+        <h1>
+            Building a smarter path
+            from resumes to opportunities.
+        </h1>
+
+        <p>
+            ResumeAI is an AI-assisted resume screening project
+            designed to help analyse graduate candidate profiles
+            through structured data and transparent scoring.
+        </p>
+
+    </section>
+
+
+    <section class="about-grid">
+
+        <div class="about-card">
+
+            <span class="feature-icon">
+                🎯
+            </span>
+
+            <h2>
+                Our Objective
+            </h2>
+
+            <p>
+                The objective of ResumeAI is to simplify the initial
+                candidate screening process by converting resume-related
+                information into meaningful candidate insights.
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <span class="feature-icon">
+                🤖
+            </span>
+
+            <h2>
+                How It Works
+            </h2>
+
+            <p>
+                Candidate attributes such as skills, experience,
+                projects, internships, CGPA and achievements are
+                evaluated using a transparent suitability scoring
+                framework.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="sdg-section">
+
+        <div class="sdg-number">
+            8
+        </div>
+
+        <div class="sdg-content">
+
+            <span class="eyebrow">
+                UNITED NATIONS SDG ALIGNMENT
+            </span>
+
+            <h2>
+                SDG 8 — Decent Work and Economic Growth
+            </h2>
+
+            <p>
+                ResumeAI aligns with Sustainable Development Goal 8,
+                which focuses on decent work and economic growth.
+                The project aims to support the employment process by
+                making initial candidate analysis faster, more
+                structured and easier to understand.
+            </p>
+
+            <div class="sdg-points">
+
+                <div>
+                    <strong>
+                        01
+                    </strong>
+
+                    <span>
+                        Supports efficient candidate screening.
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong>
+                        02
+                    </strong>
+
+                    <span>
+                        Helps connect suitable graduates with employment
+                        opportunities.
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong>
+                        03
+                    </strong>
+
+                    <span>
+                        Reduces repetitive manual work during initial
+                        resume evaluation.
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong>
+                        04
+                    </strong>
+
+                    <span>
+                        Encourages structured and transparent
+                        recruitment analysis.
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="team-section">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                OUR TEAM
+            </span>
+
+            <h2>
+                Meet the Team
+            </h2>
+
+            <p>
+                ResumeAI was developed as a collaborative academic
+                project.
+            </p>
+
+        </div>
+
+
+        <div class="team-grid">
+
+            <div class="team-card">
+
+                <div class="avatar">
+                    G
+                </div>
+
+                <h3>
+                    Gautham
+                </h3>
+
+                <span>
+                    Team Member
+                </span>
+
+            </div>
+
+
+            <div class="team-card">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <h3>
+                    Adhwaith
+                </h3>
+
+                <span>
+                    Team Member
+                </span>
+
+            </div>
+
+
+            <div class="team-card">
+
+                <div class="avatar">
+                    D
+                </div>
+
+                <h3>
+                    Devika
+                </h3>
+
+                <span>
+                    Team Member
+                </span>
+
+            </div>
+
+
+            <div class="team-card">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <h3>
+                    Anna Mary
+                </h3>
+
+                <span>
+                    Team Member
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="project-note">
+
+        <span class="feature-icon">
+            ⚠️
+        </span>
+
+        <div>
+
+            <h3>
+                Responsible Use
+            </h3>
+
+            <p>
+                ResumeAI is intended as an academic and decision-support
+                project. Its score should not replace human judgement,
+                interviews or responsible recruitment practices.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="footer-brand">
+
+        <a href="{{ url_for('home') }}" class="footer-logo">
+            <span class="logo-mark">R</span>
+            ResumeAI
+        </a>
+
+        <p>
+            Intelligent and transparent resume screening.
+        </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('screening') }}">
+            Analyse
+        </a>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('dataset') }}">
+            Dataset
+        </a>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 ResumeAI
+        </span>
+
+        <span>
+            SDG 8 — Decent Work and Economic Growth
+        </span>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
