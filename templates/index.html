@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ResumeAI | Intelligent Resume Screening</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a href="{{ url_for('home') }}" class="logo">
+        <span class="logo-mark">R</span>
+        ResumeAI
+    </a>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('home') }}" class="active">
+            Home
+        </a>
+
+        <a href="{{ url_for('screening') }}">
+            Analyse
+        </a>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('dataset') }}">
+            Dataset
+        </a>
+
+        <a href="{{ url_for('about') }}">
+            About
+        </a>
+
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle theme"
+        >
+            🌙
+        </button>
+
+    </div>
+
+</nav>
+
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="eyebrow">
+            AI-POWERED RECRUITMENT
+        </span>
+
+        <h1>
+            Smarter Resume
+            <span>Screening.</span>
+        </h1>
+
+        <p>
+            ResumeAI helps recruiters evaluate graduate candidates
+            using a transparent suitability score based on skills,
+            experience, projects, academics and achievements.
+        </p>
+
+        <div class="hero-actions">
+
+            <a
+                href="{{ url_for('screening') }}"
+                class="btn btn-primary"
+            >
+                Start Analysis
+            </a>
+
+            <a
+                href="{{ url_for('dashboard') }}"
+                class="btn btn-secondary dashboard-cta"
+            >
+                Explore Dashboard →
+            </a>
+
+        </div>
+
+        <div class="hero-note">
+            <span>✓</span>
+            Candidate eligibility starts at 18 years
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="card-glow"></div>
+
+        <div class="ai-card-top">
+            <span>AI ANALYSIS</span>
+            <span class="status-dot"></span>
+        </div>
+
+        <div class="score-preview">
+
+            <div class="mini-score">
+                <strong>87</strong>
+                <span>/100</span>
+            </div>
+
+            <div>
+                <h3>Strong Candidate</h3>
+                <p>Profile suitability</p>
+            </div>
+
+        </div>
+
+        <div class="metric-row">
+
+            <div>
+                <span>Skills</span>
+                <strong>92%</strong>
+            </div>
+
+            <div>
+                <span>Projects</span>
+                <strong>88%</strong>
+            </div>
+
+            <div>
+                <span>Experience</span>
+                <strong>84%</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="features section">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">
+            PLATFORM
+        </span>
+
+        <h2>
+            Everything you need for candidate analysis.
+        </h2>
+
+        <p>
+            A simple workflow for exploring data, screening
+            candidates and understanding hiring patterns.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">⚡</div>
+
+            <h3>Fast Screening</h3>
+
+            <p>
+                Generate a candidate suitability score using
+                multiple resume-related factors.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">📊</div>
+
+            <h3>Data Insights</h3>
+
+            <p>
+                Explore hiring statistics, missing values,
+                duplicates and feature relationships.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">🎯</div>
+
+            <h3>Transparent Scoring</h3>
+
+            <p>
+                Understand how experience, skills, projects
+                and academics contribute to the score.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">🌱</div>
+
+            <h3>SDG 8 Aligned</h3>
+
+            <p>
+                Designed to support efficient access to
+                employment opportunities and decent work.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="cta-section">
+
+    <div>
+
+        <span class="eyebrow">
+            READY TO BEGIN?
+        </span>
+
+        <h2>
+            Turn resume information into useful insights.
+        </h2>
+
+    </div>
+
+    <a
+        href="{{ url_for('screening') }}"
+        class="btn btn-primary"
+    >
+        Analyse a Candidate →
+    </a>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="footer-brand">
+
+        <a href="{{ url_for('home') }}" class="footer-logo">
+            <span class="logo-mark">R</span>
+            ResumeAI
+        </a>
+
+        <p>
+            Intelligent and transparent resume screening
+            for modern recruitment.
+        </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <a href="{{ url_for('screening') }}">
+            Analyse
+        </a>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('dataset') }}">
+            Dataset
+        </a>
+
+        <a href="{{ url_for('about') }}">
+            About
+        </a>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 ResumeAI
+        </span>
+
+        <span>
+            Built for smarter recruitment
+        </span>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

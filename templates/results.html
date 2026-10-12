@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Screening Result | ResumeAI</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a href="{{ url_for('home') }}" class="logo">
+        <span class="logo-mark">R</span>
+        ResumeAI
+    </a>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('screening') }}">
+            Analyse
+        </a>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('dataset') }}">
+            Dataset
+        </a>
+
+        <a href="{{ url_for('about') }}">
+            About
+        </a>
+
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+        >
+            🌙
+        </button>
+
+    </div>
+
+</nav>
+
+
+<main class="page-container">
+
+    <div class="result-header">
+
+        <span class="eyebrow">
+            SCREENING COMPLETE
+        </span>
+
+        <h1>
+            Candidate Analysis
+        </h1>
+
+        <p>
+            AI-assisted suitability assessment based on the
+            information provided.
+        </p>
+
+    </div>
+
+
+    <section class="result-hero">
+
+        <div
+            class="score-circle"
+            style="--score-percent: {{ score }};"
+        >
+
+            <div>
+
+                <strong>
+                    {{ score }}
+                </strong>
+
+                <span>
+                    /100
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="result-summary">
+
+            <span class="result-label">
+                RECOMMENDATION
+            </span>
+
+            <h2>
+                {{ recommendation }}
+            </h2>
+
+            {% if candidate %}
+
+            <p>
+                Candidate meets the minimum age requirement
+                and has been evaluated using the ResumeAI
+                suitability scoring framework.
+            </p>
+
+            {% else %}
+
+            <p>
+                No candidate has been analyzed yet.
+            </p>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+
+    {% if candidate %}
+
+    <section class="result-section">
+
+        <div class="section-heading compact">
+
+            <span class="eyebrow">
+                PROFILE
+            </span>
+
+            <h2>
+                Candidate Information
+            </h2>
+
+        </div>
+
+
+        <div class="profile-grid">
+
+            <div class="profile-item">
+                <span>Age</span>
+                <strong>{{ candidate.age }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Education</span>
+                <strong>{{ candidate.education }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>University</span>
+                <strong>{{ candidate.university }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>CGPA</span>
+                <strong>{{ candidate.cgpa }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Experience</span>
+                <strong>{{ candidate.experience }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Internships</span>
+                <strong>{{ candidate.internships }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Projects</span>
+                <strong>{{ candidate.projects }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Hackathons</span>
+                <strong>{{ candidate.hackathons }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Research</span>
+                <strong>{{ candidate.research }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Programming Languages</span>
+                <strong>{{ candidate.programming_languages }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Certifications</span>
+                <strong>{{ candidate.certifications }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Technical Skills</span>
+                <strong>{{ candidate.skills_score }}%</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Soft Skills</span>
+                <strong>{{ candidate.soft_skills_score }}%</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Resume Length</span>
+                <strong>{{ candidate.resume_length }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Company Type</span>
+                <strong>{{ candidate.company_type or "Not specified" }}</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="result-section">
+
+        <div class="section-heading compact">
+
+            <span class="eyebrow">
+                AI INSIGHTS
+            </span>
+
+            <h2>
+                Candidate Insights
+            </h2>
+
+        </div>
+
+
+        <div class="insight-list">
+
+            {% for insight in insights %}
+
+            <div class="insight-card">
+
+                <span class="insight-icon">
+                    ✓
+                </span>
+
+                <p>
+                    {{ insight }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <div class="disclaimer">
+
+        <strong>Important:</strong>
+
+        ResumeAI provides an AI-assisted suitability score
+        for educational/project purposes. The score should
+        support human decision-making and should not be used
+        as the sole basis for employment decisions.
+
+    </div>
+
+
+    <div class="result-actions">
+
+        <a
+            href="{{ url_for('screening') }}"
+            class="btn btn-primary"
+        >
+            Analyse Another Candidate
+        </a>
+
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="btn btn-secondary dashboard-cta"
+        >
+            Explore Dashboard
+        </a>
+
+        <a
+            href="{{ url_for('dataset') }}"
+            class="btn btn-secondary"
+        >
+            View Dataset
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="footer-brand">
+
+        <a href="{{ url_for('home') }}" class="footer-logo">
+            <span class="logo-mark">R</span>
+            ResumeAI
+        </a>
+
+        <p>
+            Intelligent and transparent resume screening.
+        </p>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 ResumeAI
+        </span>
+
+        <span>
+            AI-assisted recruitment analysis
+        </span>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
